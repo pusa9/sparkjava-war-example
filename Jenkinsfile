@@ -17,15 +17,16 @@ pipeline{
 				}
 		stage('Upload to nexus'){
 					steps{
-					
-						nexusArtifactUploader artifacts: [[artifactId: 'sparkjava-hello-world', classifier: '', file: 'target/sparkjava-hello-world-1.0.war', type: 'war']], 
+						script{
+							def mavenPom = readMavenPom file: 'pom.xml'
+						nexusArtifactUploader artifacts: [[artifactId: 'sparkjava-hello-world', classifier: '', file: "target/sparkjava-hello-world-${mavenPom.version}.war", type: 'war']], 
 							credentialsId: 'nexus3',
 							groupId: 'sparkjava-hello-world', 
 							nexusUrl: '172.31.2.179:8081', 
 							nexusVersion: 'nexus3',
 							protocol: 'http', 
 							repository: 'venkat', 
-							version: '1.0'
+							version: "${mavenPom.version}"
 					}
 				
 				}

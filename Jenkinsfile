@@ -4,7 +4,7 @@ pipeline{
 	
 		stage('SCM - Checkout'){
 			steps{
-				git 'https://github.com/pusa9/spring-petclinic.git'
+				git 'https://github.com/pusa9/sparkjava-war-example.git'
 			
 			}
 		}

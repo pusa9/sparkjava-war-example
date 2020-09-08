@@ -19,13 +19,14 @@ pipeline{
 					steps{
 						script{
 							def mavenPom = readMavenPom file: 'pom.xml'
+							def nexusRepoName = mavenPom.version.endsWith('SNAPSHOT') ? "snapshot-venkat" : "venkat"
 						nexusArtifactUploader artifacts: [[artifactId: 'sparkjava-hello-world', classifier: '', file: "target/sparkjava-hello-world-${mavenPom.version}.war", type: 'war']], 
 							credentialsId: 'nexus3',
 							groupId: 'sparkjava-hello-world', 
 							nexusUrl: '172.31.2.179:8081', 
 							nexusVersion: 'nexus3',
 							protocol: 'http', 
-							repository: 'venkat', 
+							repository: nexusRepoName, 
 							version: "${mavenPom.version}"
 						}
 					}

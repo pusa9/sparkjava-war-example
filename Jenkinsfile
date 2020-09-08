@@ -27,6 +27,7 @@ pipeline{
 							protocol: 'http', 
 							repository: 'venkat', 
 							version: "${mavenPom.version}"
+						}
 					}
 				
 				}

@@ -19,14 +19,14 @@ pipeline{
                 stage('Upload to nexus'){
 					steps{
 					
-						nexusArtifactUploader artifacts: [[artifactId: 'myweb', classifier: '', file: 'target/my-app-0.0.7.war', type: 'war']], 
+						nexusArtifactUploader artifacts: [[artifactId: 'sparkjava-hello-world', classifier: '', file: 'target/sparkjava-hello-world-1.0.war', type: 'war']], 
 							credentialsId: 'nexus3',
-							groupId: 'in.javahome', 
+							groupId: 'sparkjava-hello-world', 
 							nexusUrl: '172.31.2.179:8081', 
 							nexusVersion: 'nexus3',
 							protocol: 'http', 
 							repository: 'venkat', 
-							version: '0.0.7'
+							version: '1.0'
 					}
 				
 				}
